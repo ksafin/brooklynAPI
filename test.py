@@ -1,12 +1,11 @@
-import boardAPI as brd
+import brooklyn as brd
 import time
 
-test = brd.MotorHat(0,0)
-worked = test.begin()
-print worked
+test = brd.Brooklyn()
+test.setcard(2, brd.EMPIRE_STATE)
 
-motor1 = test.getmotor(1)
+motor1 = test.getmotor(3)
+motor2 = test.getmotor(4)
 
-motor1.setPPR(420.0)
-motor1.rotatePWM(200,10)
+motor1.setPWM(128)
 

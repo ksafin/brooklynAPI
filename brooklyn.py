@@ -1,4 +1,6 @@
 import cardAPI
+import serial
+import math
 
 EMPIRE_STATE = 1
 
@@ -10,7 +12,7 @@ class Brooklyn:
             baudrate=1000000
         )
 
-        self.enabled = False
+        self.enabled = True
 
         # Declare all bays as empty
         self.card1 = None
@@ -57,7 +59,7 @@ class Brooklyn:
             return None
 
         # Identify proper bay number
-        idx = trunc((motornum + 1) / 2)
+        idx = math.trunc((motornum + 1) / 2)
 
         # Identify if first or second motor
         midx = motornum % 2
@@ -68,13 +70,13 @@ class Brooklyn:
 
         # Return motor from appropriate card bay
         if idx == 1:
-            return self.card1.getmotor(midx)
+            return self.card1.getMotor(midx)
         elif idx == 2:
-            return self.card2.getmotor(midx)
+            return self.card2.getMotor(midx)
         elif idx == 3:
-            return self.card3.getmotor(midx)
+            return self.card3.getMotor(midx)
         elif idx == 4:
-            return self.card4.getmotor(midx)
+            return self.card4.getMotor(midx)
         else:
             return None
 

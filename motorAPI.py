@@ -21,7 +21,7 @@ class Motor:
 
     def __init__(self, ser, motor_id):
         self.ser = ser
-        self.cid = motor_id
+        self.cid = motor_id - 1
         self.cw = True
         self.PIDSet = False
         self.isPID = False
@@ -46,6 +46,7 @@ class Motor:
 
         # Assemble packet and write to USB, return true for success
         packet = pu.getPacket(0x00, self.cid, list([pwm, int(self.cw)]))
+        print list(packet)
         self.ser.write(packet)
         return True
 
