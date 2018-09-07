@@ -45,7 +45,7 @@ class Brooklyn:
         # Conduct basic handshake, repeat until complete
         self.ser.write(bytearray([170]))
         while not handshake:
-            if self.ser.read() == 170:
+            if ord(self.ser.read()) == 170:
                 handshake = True
 
         self.enabled = True
@@ -100,12 +100,12 @@ class Brooklyn:
 
         # Return servo from appropriate card bay
         if bay == 1:
-            return self.card1.getservo(servonum)
+            return self.card1.getServo(servonum)
         elif bay == 2:
-            return self.card2.getservo(servonum)
+            return self.card2.getServo(servonum)
         elif bay == 3:
-            return self.card3.getservo(servonum)
+            return self.card3.getServo(servonum)
         elif bay == 4:
-            return self.card4.getservo(servonum)
+            return self.card4.getServo(servonum)
         else:
             return None
