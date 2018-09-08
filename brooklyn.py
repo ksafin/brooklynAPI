@@ -12,7 +12,7 @@ class Brooklyn:
             baudrate=1000000
         )
 
-        self.enabled = True
+        self.enabled = False
 
         # Declare all bays as empty
         self.card1 = None
@@ -39,14 +39,17 @@ class Brooklyn:
         else:
             return None
 
-    #  TODO -- MAKE SPECIAL TEST PACKET FOR VERIFICATION
-    # def begin(self):
-    #     if self.spi.ping():
-    #         self.spi.initializeRegisters()
-    #         self.enabled = True
-    #         return True
-    #     else:
-    #         return False
+    def begin(self):
+        handshake = False
+
+        # Conduct basic handshake, repeat until complete
+        self.ser.write(170)
+        while not handshake:
+            if self.ser.read() == 170:
+                handshake = True
+
+        self.enabled = True
+        return True
 
     # Returns motor object given a motor number
     # motornum -- Must be a value from 1-8

@@ -7,6 +7,8 @@ test.setcard(2, brd.EMPIRE_STATE)
 test.setcard(3, brd.EMPIRE_STATE)
 test.setcard(4, brd.EMPIRE_STATE)
 
+test.begin()
+
 motor1 = test.getmotor(1)
 motor2 = test.getmotor(2)
 motor3 = test.getmotor(3)
