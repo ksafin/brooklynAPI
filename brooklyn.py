@@ -43,7 +43,7 @@ class Brooklyn:
         handshake = False
 
         # Conduct basic handshake, repeat until complete
-        self.ser.write(170)
+        self.ser.write(bytearray([170]))
         while not handshake:
             if self.ser.read() == 170:
                 handshake = True
